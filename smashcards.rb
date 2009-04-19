@@ -38,12 +38,21 @@ Shoes.app do
   flow do
     # Title at the top
     stack :height => 50 do
-      background gradient(black, gray) 
-      title "SmashCards", :stroke => tomato
+      background gradient(black, gray)
+      20.times do |i|
+        strokewidth 4
+        stroke rgb((0.0..0.5).rand, (0.0..1.0).rand, (0.0..0.3).rand)
+        line 0, i * 4, 400, i * 4
+      end
+      
+      mask do
+        title "SmashCards"
+      end
+      
     end
     
     # This should be replaced with the flash cards
-    @main_window = stack :width => 600, :height => 300, :margin => 20 do
+    @main_window = stack :width => 600, :height => 300, :margin => 5 do
       circles
       @the_text = para "You can open a flashcard file here, by chosing open below. ",
       "You will need a file in csv (or comma separated value) format, ",
